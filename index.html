@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VentanaMedia - Custom Website Development</title>
+    
+    <!-- Google Fonts: A clean, modern sans-serif like Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Favicon: White 'V' on a blue background -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23007BFF'/%3E%3Ctext x='50' y='78' font-family='Montserrat, sans-serif' font-weight='700' font-size='80' fill='%23FFFFFF' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
+
+    <style>
+        /* --- Color & Font Variables --- */
+        :root {
+            --primary-blue: #007BFF;
+            --dark-blue: #0056b3;
+            --accent-yellow: #FFC107;
+            --clean-white: #FFFFFF;
+            --light-gray: #CED4DA;
+            --dark-text: #333333;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body); margin: 0; padding: 0;
+            background-color: var(--clean-white); color: var(--dark-text);
+            line-height: 1.6; padding-bottom: 150px;
+        }
+
+        /* --- Header & Navigation (Compact) --- */
+        .header {
+            background-color: var(--clean-white); padding: 5px 20px; text-align: center;
+            position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .hamburger-icon .bar { background-color: var(--primary-blue); }
+        #nav-menu { background-color: var(--clean-white); }
+        #nav-menu a { color: var(--primary-blue); font-weight: bold; transition: color 0.3s; }
+        #nav-menu a:hover { color: var(--dark-blue); }
+        
+        /* --- General Section Styling (Compact) --- */
+        .section { padding: 20px 20px; text-align: center; }
+        .bg-gray { background-color: var(--light-gray); }
+        .section-title {
+            font-size: 1.8em; color: var(--primary-blue);
+            margin-top: 0; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px;
+            display: inline-block; border-bottom: 3px solid var(--accent-yellow); padding-bottom: 5px;
+        }
+        
+        .feature-icon {
+            width: 32px; height: 32px; fill: var(--primary-blue);
+            flex-shrink: 0; margin-right: 15px; margin-top: 5px;
+        }
+        .icon-diamond {
+            color: var(--accent-yellow); font-size: 1em; line-height: 1;
+            flex-shrink: 0; margin-right: 15px; margin-top: 5px;
+        }
+
+        /* --- Hero/Title Section --- */
+        #titulo {
+            background-color: var(--primary-blue); color: var(--clean-white);
+            padding: 30px 20px;
+        }
+        .hero-title {
+            font-size: 3.5em; margin: 0; font-weight: 900; letter-spacing: -2px;
+        }
+        .hero-subtitle {
+            font-size: 2em; margin-top: 0; font-weight: 400;
+        }
+
+        /* --- Owner Photo & Bio (Compact) --- */
+        #owner { padding-top: 25px; }
+        .owner-photo {
+            width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--primary-blue); margin-bottom: 4px;
+        }
+        .owner-name {
+            font-weight: bold; font-size: 1.5em; margin-top: 0;
+            color: var(--dark-blue);
+        }
+        .bio-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 25px;
+            max-width: 600px;
+            margin: 20px auto 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .bio-icon {
+            width: 40px; height: 40px;
+            fill: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        .owner-bio {
+            font-size: 1em;
+            line-height: 1.7;
+            color: var(--dark-text);
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        /* --- Lists with Card Style --- */
+        .info-list {
+            font-size: 1.2em; list-style: none; padding: 0; margin: 0 auto;
+            max-width: 800px; display: flex;
+            flex-direction: column; align-items: stretch; gap: 10px;
+        }
+        .info-list li {
+            background: var(--clean-white); border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); padding: 20px;
+            display: flex; align-items: flex-start; text-align: left;
+        }
+        #why-us .info-list li {
+            background-color: var(--light-gray);
+        }
+        .info-list li div { color: var(--dark-blue); font-weight: 700; }
+        .info-list h3 { color: var(--dark-blue); margin: 0 0 4px 0; font-size: 1em; font-weight: 700;}
+        .info-list p {
+            font-size: 0.9em; margin: 0;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+        
+        /* --- Contact Section --- */
+        #contact { background-color: var(--primary-blue); color: var(--clean-white); }
+        #contact .section-title { color: var(--clean-white); border-bottom-color: var(--accent-yellow); }
+        .contact-info-wrapper { text-align: center; }
+        .contact-info {
+            list-style: none; padding: 0; font-size: 1.2em;
+            display: inline-block; margin: 0 auto; text-align: left;
+        }
+        .contact-info li { margin-bottom: 8px; }
+        .contact-info strong { color: var(--accent-yellow); }
+        .contact-info a { color: var(--clean-white); text-decoration: none; }
+
+        /* --- Helper/Responsive Styles --- */
+        .hamburger-icon { cursor: pointer; display: inline-block; padding: 10px; }
+        .hamburger-icon .bar { display: block; width: 25px; height: 3px; margin: 5px auto; transition: 0.4s; }
+        #nav-menu { display: none; list-style: none; padding: 0; margin: 5px 0 0 0; }
+        #nav-menu li { padding: 8px 0; }
+        @media (min-width: 768px) {
+            .hamburger-icon { display: none; }
+            #nav-menu { display: flex; justify-content: center; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="hamburger-icon" id="hamburger-btn"> <span class="bar"></span><span class="bar"></span><span class="bar"></span> </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#owner">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="titulo" class="section">
+            <h1 class="hero-title">VentanaMedia</h1>
+            <p class="hero-subtitle">Florida</p>
+        </section>
+
+        <section id="owner" class="section">
+            <img src="JefeFoto.webp" alt="Photo of the owner, Rob" class="owner-photo" width="400" height="400">
+            <p class="owner-name">Rob</p>
+            <div class="bio-card">
+                <!-- ICON UPDATED HERE -->
+                <svg class="bio-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <p class="owner-bio">As a small business owner myself, I understand the need for a powerful online presence without a massive budget. My passion is helping fellow entrepreneurs succeed with clean, effective websites that get results. Let's build something great together.</p>
+            </div>
+        </section>
+
+        <section id="services" class="section bg-gray">
+            <h2 class="section-title">Our Services</h2>
+            <ul class="info-list">
+                <li><svg class="feature-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 7.09L10.25 14.34 8.5 12.59l-1.41 1.41 3.16 3.16 6.66-6.66-1.41-1.41z"/></svg><div>Designing Simple, Clean Websites</div></li>
+                <li><svg class="feature-icon" viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zm-2 12H4v-2h6v2zm0-4H4v-2h6v2zm0-4H4V9h6v2zm10 8h-6v-2h6v2zm0-4h-6v-2h6v2zm0-4h-6V9h6v2z"/></svg> <div>Specializing in Small Businesses</div></li>
+                <li><svg class="feature-icon" viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69-.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg> <div>Updating Websites</div></li>
+                <li><svg class="feature-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v-2h-2z"/></svg> <div>Optimizing Google Maps Business Profiles</div></li>
+            </ul>
+        </section>
+        
+        <section id="why-us" class="section">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <ul class="info-list">
+                <li><svg class="feature-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.94 13.5l-3.5-3.5 1.41-1.41 2.09 2.09 4.59-4.59L18.09 9l-6.03 6.5z"/></svg> <div>Lowest Prices</div></li>
+                <li><svg class="feature-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v-2h-2z"/></svg> <div>Quickest Turnaround</div></li>
+                <li><svg class="feature-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg> <div>A Small Business working for Small Businesses</div></li>
+                <li><svg class="feature-icon" viewBox="0 0 24 24"><path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z"/></svg> <div>Our Websites are Mobile Friendly and Responsive</div></li>
+            </ul>
+        </section>
+
+        <section id="faq" class="section bg-gray">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <ul class="info-list">
+                <li><span class="icon-diamond">◆</span> <div><h3>How do Customers Pay for the Service?</h3><p>We use PayPal Business. We send the customer a PayPal Business Link or a PayPal Invoice. Customers can then pay using their PayPal balance, a PayPal linked bank account, or a credit/debit card. A customer does not have to have a PayPal account to pay through PayPal with a credit/debit card.</p></div></li>
+                <li><span class="icon-diamond">◆</span> <div><h3>Can a customer receive an invoice?</h3><p>Yes, we can send customers a PayPal Invoice. A customer does not need to have PayPal to receive this invoice.</p></div></li>
+                <li><span class="icon-diamond">◆</span> <div><h3>Are there any ongoing cost?</h3><p>No, there are no monthly fees, no hosting fees, no domain fees (Unless you want to purchase your own domain name). We use Github (Owned by Microsoft) to host your website.</p></div></li>
+            </ul>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-info-wrapper">
+                <ul class="contact-info">
+                    <li><strong>Business Name:</strong> VentanaMedia</li>
+                    <li><strong>Location:</strong> Jacksonville, FL</li>
+                    <li><strong>Telephone:</strong> <a href="tel:9043723423">(904) 372-3423</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:ventanamedia@gmail.com">ventanamedia@gmail.com</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer>
+        <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #f0f0f0; padding: 15px; text-align: center; border-top: 1px solid #ccc; z-index: 1000; display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+            <p style="margin: 0 15px 10px 0; color: #333;">
+                <strong>Cookie Notice:</strong> This website does not use cookies. However, our hosting provider uses essential and functional cookies to operate this site and provide its services. By continuing to use this site, you agree to the use of cookies by our hosting provider.
+            </p>
+            <div>
+                <button id="accept-cookies" style="background-color: #007bff; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin: 5px;">Accept</button>
+                <button id="decline-cookies" style="background-color: #dc3545; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin: 5px;">Decline</button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = navMenu.querySelectorAll('a');
+        hamburgerBtn.addEventListener('click', () => { navMenu.style.display = (navMenu.style.display === 'block') ? 'none' : 'block'; });
+        navLinks.forEach(link => { link.addEventListener('click', () => { if (window.innerWidth < 768) { navMenu.style.display = 'none'; } }); });
+        const cookieBanner = document.getElementById('cookie-banner');
+        const acceptBtn = document.getElementById('accept-cookies');
+        const declineBtn = document.getElementById('decline-cookies');
+        function hideBanner() { cookieBanner.style.display = 'none'; }
+        acceptBtn.addEventListener('click', hideBanner);
+        declineBtn.addEventListener('click', hideBanner);
+    </script>
+</body>
+</html>
